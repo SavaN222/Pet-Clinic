@@ -1,10 +1,112 @@
-.full-section { 
-	height: 100vh;
+html, body {
+	font-family: 'Roboto', sans-serif;
 }
-.full-section—first { 
-	height: 90vh; 
-} 
 
+::selection {
+	background-color: #80BB01;
+	color: #fff;
+}
+
+.main-color {
+	color: #80BB01;
+}
+.main-bg-color {
+	background-color: #80BB01;
+}
+
+.scroll-nav.scrolled {
+  background-color: #80BB01 !important;
+  color: #000;
+  transition: background-color 200ms linear;
+  opacity: 0.7;
+}
+.scroll-nav.scrolled .navbar-brand:hover, .scroll-nav.scrolled .nav-link:hover  {
+	color: #FFF !important; 
+}
+
+.nav-link {
+	color: #000 !important;
+	font-size: 1.3rem;
+}
+
+.navbar-brand:hover {
+	color: #80BB01 !important;
+}
+.nav-link:hover {
+	background-color: #80BB01 !important;
+}
+
+/* Carousel */
 .img-size {
 	height: 90vh;
 }
+
+.text-top-right {
+    top: 10vh;
+    left: auto;
+    right: 30vh;
+    bottom: auto;
+}
+.text-heading {
+	font-size: 7vh; 
+}
+
+#promotion1 {
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+}
+/* End Of Carousel */
+#promotion {
+	background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://images.unsplash.com/photo-1606098216818-40939b7c98ad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+
+#parrot {
+	background:url("https://images.unsplash.com/photo-1506220926022-cc5c12acdb35?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.my-btn {
+	background-color: #000;
+}
+
+.my-btn:hover {
+	background-color: #80BB01; 
+}
+
+footer{
+	background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../images/footer.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	color: #80BB01;
+}
+footer a {
+	color: #80BB01;
+}
+
+/* [1] The container */
+.img-hover-zoom {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* Colorize-zoom Container */
+.img-hover-zoom--colorize img {
+  transition: transform .5s, filter 1.5s ease-in-out;
+  filter: grayscale(100%);
+}
+
+/* The Transformation */
+.img-hover-zoom--colorize:hover img {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
