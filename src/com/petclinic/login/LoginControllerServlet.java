@@ -62,7 +62,7 @@ public class LoginControllerServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		response.sendRedirect("welcome.jsp");
+		response.sendRedirect("VetControllerServlet");
 		
 		
 	}

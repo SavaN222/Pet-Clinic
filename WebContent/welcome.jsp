@@ -7,7 +7,12 @@
 	}
 %>
 
-<h1>HELLO <%= session.getAttribute("id") %></h1>
+<h1>INFO ABOUT VET</h1>
+<p>${VET.id}</p>
+<p>${VET.firstName}</p>
+<p>${VET.lastName}</p>
+<p>${VET.img}</p>
+<p>${VET.email}</p>
 
 
 
