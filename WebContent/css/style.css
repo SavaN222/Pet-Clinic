@@ -3,19 +3,23 @@ html, body {
 }
 
 ::selection {
-	background-color: #80BB01;
+	background-color: rgb(18,75,136);
 	color: #fff;
 }
 
 .main-color {
-	color: #80BB01;
+	color: rgb(18,75,136);
 }
 .main-bg-color {
-	background-color: #80BB01;
+	background: rgb(18,75,136);
+background: linear-gradient(117deg, rgba(18,75,136,1) 29%,
+rgba(46,109,167,1) 50%, rgba(82,150,190,1) 74%);
 }
 
 .scroll-nav.scrolled {
-  background-color: #80BB01 !important;
+  background: rgb(18,75,136) !important;
+background: linear-gradient(117deg, rgba(18,75,136,1) 29%,
+rgba(46,109,167,1) 50%, rgba(82,150,190,1) 74%) !important;
   color: #000;
   transition: background-color 200ms linear;
   opacity: 0.7;
@@ -30,10 +34,12 @@ html, body {
 }
 
 .navbar-brand:hover {
-	color: #80BB01 !important;
+	color: rgb(18,75,136) !important;
 }
 .nav-link:hover {
-	background-color: #80BB01 !important;
+	background: rgb(18,75,136) !important;
+background: linear-gradient(117deg, rgba(18,75,136,1) 29%,
+rgba(46,109,167,1) 50%, rgba(82,150,190,1) 74%) !important;
 }
 
 /* Carousel */
@@ -74,11 +80,16 @@ html, body {
 }
 
 .my-btn {
-	background-color: #000;
+	background: rgb(19,93,172);
+background: linear-gradient(117deg, rgba(19,93,172,1) 35%,
+rgba(53,137,213,1) 50%, rgba(100,172,215,1) 68%);
 }
 
+
 .my-btn:hover {
-	background-color: #80BB01; 
+	background: rgb(18,75,136);
+background: linear-gradient(117deg, rgba(18,75,136,1) 29%,
+rgba(46,109,167,1) 50%, rgba(82,150,190,1) 74%);
 }
 
 footer{
@@ -86,10 +97,10 @@ footer{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	color: #80BB01;
+	color: #fff;
 }
 footer a {
-	color: #80BB01;
+	color: #fff;
 }
 
 /* [1] The container */
