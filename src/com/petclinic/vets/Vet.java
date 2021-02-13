@@ -7,20 +7,23 @@ public class Vet {
 	private String lastName;
 	private String img;
 	private String email;
+	private String password;
 	
-	public Vet(int id, String firstName, String lastName, String img, String email) {
+	public Vet(int id, String firstName, String lastName, String img, String email, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.img = img;
 		this.email = email;
+		this.password = password;
 	}
 	
-	public Vet(String firstName, String lastName, String img, String email) {
+	public Vet(String firstName, String lastName, String img, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.img = img;
 		this.email = email;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -61,6 +64,14 @@ public class Vet {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
