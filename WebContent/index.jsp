@@ -190,6 +190,7 @@
 	
 <!-- FOOTER -->
 <jsp:include page="/include/footer.jsp" />
+</div> <!-- end of container -->
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
@@ -209,5 +210,4 @@ $('#topCarousel').carousel({
 })
 </script>
 
-</body>
-</html>
+<jsp:include page="/include/close.jsp" />

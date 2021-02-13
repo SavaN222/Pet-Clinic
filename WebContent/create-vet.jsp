@@ -35,4 +35,4 @@
 
 
 
-<jsp:include page="/include/footer.jsp" />
+<jsp:include page="/include/close.jsp" />

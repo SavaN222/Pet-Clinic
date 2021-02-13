@@ -114,7 +114,7 @@ public class VetControllerServlet extends HttpServlet {
 		
 		request.setAttribute("VET", vet);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/welcome.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/dashboard.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}

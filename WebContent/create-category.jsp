@@ -9,7 +9,7 @@
 		
 		<div class="form-group">
 	    <label for="category">Category Name</label>
-	    <input type="text" name="name" class="form-control" id=""category"" placeholder="Category Name">
+	    <input type="text" name="name" class="form-control" id="category" placeholder="Category Name">
 	  </div>
 	  
 	  
@@ -21,4 +21,4 @@
 
 
 
-<jsp:include page="/include/footer.jsp" />
+<jsp:include page="/include/close.jsp" />
