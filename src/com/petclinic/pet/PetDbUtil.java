@@ -116,4 +116,26 @@ public class PetDbUtil {
 		}
 		
 	}
+	
+	public void updatePet(int id, String name, String img, int age, int categoryId) {
+		String sql = "UPDATE pet SET name = ?, img = ?, age = ?, category_id = ?"
+				+ " WHERE id = ?";
+		
+		ResultSet resultSet = null;
+		
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setString(1, name);
+			stmt.setString(2, img);
+			stmt.setInt(3, age);
+			stmt.setInt(4, categoryId);
+			stmt.setInt(5, id);
+			
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+	}
 }

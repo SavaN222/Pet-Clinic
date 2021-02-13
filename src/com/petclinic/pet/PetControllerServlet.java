@@ -64,6 +64,9 @@ public class PetControllerServlet extends HttpServlet {
 			case "DELETE":
 				deletePet(request, response);
 				break;
+			case "EDIT":
+				editPets(request, response);
+				break;
 			default:
 				break;
 			}
@@ -72,6 +75,18 @@ public class PetControllerServlet extends HttpServlet {
 		}
 	}
 
+	private void editPets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("petId"));
+		
+		Pet pet = petDbUtil.getPet(id);
+		
+		request.setAttribute("PET", pet);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/update-pet.jsp");
+		requestDispatcher.forward(request, response);
+		
+	}
+	
 	private void deletePet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("petId"));		
 		
@@ -101,6 +116,9 @@ public class PetControllerServlet extends HttpServlet {
 			case "ADD":
 				createPet(request, response);
 				break;
+			case "UPDATE":
+				updatePet(request, response);
+				break;
 			default:
 				break;
 			}
@@ -116,6 +134,18 @@ public class PetControllerServlet extends HttpServlet {
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 		
 		petDbUtil.createPets(name, img, age, categoryId);
+		
+		listPets(request, response);
+	}
+	
+	private void updatePet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String img = request.getParameter("img");
+		int age = Integer.parseInt(request.getParameter("age"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		
+		petDbUtil.updatePet(id, name, img, age, categoryId);
 		
 		listPets(request, response);
 		
