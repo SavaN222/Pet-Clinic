@@ -1,8 +1,10 @@
 package com.petclinic.category;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,6 +59,9 @@ public class CategoryControllerServlet extends HttpServlet {
 			case "HOME":
 				response.sendRedirect("VetControllerServlet");
 				break;
+			case "LIST":
+				listCategories(request, response);
+				break;
 			default:
 				break;
 			}
@@ -64,6 +69,15 @@ public class CategoryControllerServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
+	}
+
+	private void listCategories(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Category> categories = categoryDbUtil.listCategories();
+		
+		request.setAttribute("LIST_CATEGORIES", categories);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/welcome.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
@@ -91,7 +105,7 @@ public class CategoryControllerServlet extends HttpServlet {
 		}
 	}
 
-	private void addCategory(HttpServletRequest request, HttpServletResponse response) {
+	private void addCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String name = request.getParameter("name");
 		
 		categoryDbUtil.createCategory(name);

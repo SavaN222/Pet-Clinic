@@ -27,6 +27,7 @@
    <br><br><br>
    <h2>CATEGORY CRUD:</h2>
    <a href="create-category.jsp">Add Category</a>
+  
 
 
 <h2>TO DO LIST</h2>
