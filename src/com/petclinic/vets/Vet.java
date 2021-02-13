@@ -6,18 +6,21 @@ public class Vet {
 	private String firstName;
 	private String lastName;
 	private String img;
+	private String email;
 	
-	public Vet(int id, String firstName, String lastName, String img) {
+	public Vet(int id, String firstName, String lastName, String img, String email) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.img = img;
+		this.email = email;
 	}
 	
-	public Vet(String firstName, String lastName, String img) {
+	public Vet(String firstName, String lastName, String img, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.img = img;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -52,10 +55,20 @@ public class Vet {
 		this.img = img;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
-		return "Vet [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", img=" + img + "]";
+		return "Vet [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", img=" + img + ", email="
+				+ email + "]";
 	}
+
 	
 	
 	
