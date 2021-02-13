@@ -65,7 +65,10 @@
                         <h6 class="collapse-header">Custom Animal System:</h6>
                        <a class="collapse-item" href="create-category.jsp">Add Category</a>
                         <a class="collapse-item" href="utilities-border.html">Create Animal</a>
-                        <a class="collapse-item" href="utilities-animation.html">List Animal</a>
+                        <c:url var="listAnimalLink" value="PetControllerServlet">
+		  	<c:param name="command" value="LIST" />
+  		</c:url>
+                        <a class="collapse-item" href="${listAnimalLink}">List Animal</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>

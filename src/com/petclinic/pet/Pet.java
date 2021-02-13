@@ -7,6 +7,7 @@ public class Pet {
 	private String img;
 	private int age;
 	private int categoryId;
+	private String categoryName;
 	
 	public Pet(int id, String name, String img, int age, int categoryId) {
 		this.id = id;
@@ -16,11 +17,26 @@ public class Pet {
 		this.categoryId = categoryId;
 	}
 	
+	public Pet(int id, String name, String img, int age, String categoryName) {
+		this.id = id;
+		this.name = name;
+		this.img = img;
+		this.age = age;
+		this.categoryName = categoryName;
+	}
+	
 	public Pet(String name, String img, int age, int categoryId) {
 		this.name = name;
 		this.img = img;
 		this.age = age;
 		this.categoryId = categoryId;
+	}
+	
+	public Pet(String name, String img, int age, String categoryName) {
+		this.name = name;
+		this.img = img;
+		this.age = age;
+		this.categoryName = categoryName;
 	}
 
 	public int getId() {
@@ -61,6 +77,16 @@ public class Pet {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	@Override
