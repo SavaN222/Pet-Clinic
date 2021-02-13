@@ -15,6 +15,19 @@
 <p>${VET.email}</p>
 
 
+ <c:set var = "vetID" scope = "session" value = "${VET.id}"/>
+      <c:if test = "${vetID == 1}">
+         <a href="create-vet.jsp">CREATE VET</a>
+      </c:if>
+
+
+<h2>TO DO LIST</h2>
+<a>Vets:CRUD</a>
+<a>Pet: CRUD</a>
+<a>Blog:Crud</a>
+<a>Category:Crud</a>
+
+
 
 
 
