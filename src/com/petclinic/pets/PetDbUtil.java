@@ -11,20 +11,17 @@ import javax.sql.DataSource;
 public class PetDbUtil {
 
 	private DataSource dataSource;
-	private Connection conn;
+	
 	
 	public PetDbUtil (DataSource dataSource) {
 		this.dataSource = dataSource;
-		
-		try {
-			conn = this.dataSource.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
 	}
 	
-	private void closeConnection() {
+	private void closeConnection(Connection conn, ResultSet resultSet) {
 		try {
+			if (resultSet != null) {
+				resultSet.close();
+			}
 			if (conn != null) {
 				conn.close();
 			}
@@ -33,12 +30,13 @@ public class PetDbUtil {
 		}
 	}
 	
-	public List<Pet> getPets() throws Exception {
+	public List<Pet> getPets() {
 		List<Pet> pets = new ArrayList<Pet>();
 		
 		String sql = "SELECT * FROM pet";
 		
-		try(Statement stmt = conn.createStatement();
+		try(Connection conn = dataSource.getConnection();
+				Statement stmt = conn.createStatement();
 				ResultSet resultSet = stmt.executeQuery(sql)) {
 		
 			while (resultSet.next()) {
@@ -50,9 +48,9 @@ public class PetDbUtil {
 				
 				pets.add(new Pet(id, name, img, age, category_id));
 			}
-		} finally {
-			closeConnection();
-		} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return pets;
 		

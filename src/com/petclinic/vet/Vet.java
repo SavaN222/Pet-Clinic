@@ -1,4 +1,4 @@
-package com.petclinic.vets;
+package com.petclinic.vet;
 
 public class Vet {
 	
@@ -65,7 +65,7 @@ public class Vet {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -77,9 +77,9 @@ public class Vet {
 	@Override
 	public String toString() {
 		return "Vet [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", img=" + img + ", email="
-				+ email + "]";
+				+ email + ", password=" + password + "]";
 	}
-
+	
 	
 	
 	

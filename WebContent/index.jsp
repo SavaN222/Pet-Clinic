@@ -20,8 +20,8 @@
           <li class="nav-item item-nav">
             <a class="nav-link" href="#">Blog</a>
           </li>
-           <li class="nav-item item-nav">
-            <a class="nav-link" href="#">Login</a>
+          <li class="nav-item item-nav">
+            <a class="nav-link" href="login.jsp">Login</a>
           </li>
         </ul>
       </div>
