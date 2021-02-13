@@ -1,4 +1,4 @@
-<jsp:include page="/include/admin-header.jsp" />
+<jsp:include page="/include/profile-header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <% 
@@ -6,31 +6,64 @@
 		response.sendRedirect("login.jsp");
 	}
 %>
-
-<body id="page-top">
-
-   <!-- Page Wrapper -->
-    <div class ="container">
-        
-     
-<h3>ALL PETS</h3><a href="VetControllerServlet" class="btn btn-info">GO BACK</a>
-<div class="row">
-
-<c:forEach var="pet" items="${PET_LIST}">
-<div class="col-lg-3">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="${pet.img}" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">Name:${pet.name}</p>
-    <p class="card-text">Age::${pet.age}</p>
-    <p class="card-text">Category:${pet.categoryName}</p>
-    
-    <a href="#" class="btn btn-primary">Vidi Profil</a>
-  </div>
-</div>
-</div>
-</c:forEach>
-</div>
+<body>
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+  <c:forEach var="pet" items="${PET_LIST}">
+  <c:url var="editLink" value="PetControllerServlet">
+  	<c:param name="command" value="EDIT" />
+  	<c:param name="petId" value="${pet.id}" />
+  </c:url>
+  
+  <c:url var="deleteLink" value="PetControllerServlet">
+  	<c:param name="command" value="DELETE" />
+  	<c:param name="petId" value="${pet.id}" />
+  </c:url>
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+                                <h6 class="f-w-600">${pet.name}</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Age</p>
+                                        <h6 class="text-muted f-w-400">${pet.age}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Category</p>
+                                        <h6 class="text-muted f-w-400">${pet.categoryName }</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="${editLink}" class="m-b-10 f-w-600">UPDATE</p>
+                                        
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="${deleteLink}" class="m-b-10 f-w-600" 
+                                        onclick="if (!(confirm('Are you sure?'))) return false">
+                                        DELETE</a>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             </c:forEach>
+        </div>
+       
+    </div>
 </div>
 
 <jsp:include page="/include/close.jsp" />

@@ -74,4 +74,19 @@ public class PetDbUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deletePet(int id) {
+		String sql = "DELETE FROM pet WHERE id = ?";
+		
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setInt(1, id);
+			stmt.execute();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

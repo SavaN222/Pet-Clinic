@@ -61,6 +61,9 @@ public class PetControllerServlet extends HttpServlet {
 			case "LIST":
 				listPets(request, response);
 				break;
+			case "DELETE":
+				deletePet(request, response);
+				break;
 			default:
 				break;
 			}
@@ -69,6 +72,14 @@ public class PetControllerServlet extends HttpServlet {
 		}
 	}
 
+	private void deletePet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("petId"));		
+		
+		petDbUtil.deletePet(id);
+		
+		listPets(request, response);
+	}
+	
 	private void listPets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Pet> pets = petDbUtil.getPets();
 		
