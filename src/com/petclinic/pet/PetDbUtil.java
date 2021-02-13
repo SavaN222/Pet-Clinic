@@ -1,6 +1,7 @@
 package com.petclinic.pet;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -56,5 +57,21 @@ public class PetDbUtil {
 			closeConnection(null, resultSet);
 		}
 		return pets;
+	}
+	
+	public void createPets(String name, String img, int age, int categoryId) {
+		String sql = "INSERT INTO pet(name, img, age, category_Id) VALUES(?, ?, ?, ?)";
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			
+			stmt.setString(1, name);
+			stmt.setString(2, img);
+			stmt.setInt(3, age);
+			stmt.setInt(4, categoryId);
+			
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

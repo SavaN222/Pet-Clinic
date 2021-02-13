@@ -3,15 +3,15 @@ package com.petclinic.category;
 public class Category {
 	
 	private int id;
-	private String nameString;
+	private String name;
 	
 	public Category(int id, String nameString) {
 		this.id = id;
-		this.nameString = nameString;
+		this.name = nameString;
 	}
 	
 	public Category(String nameString) {
-		this.nameString = nameString;
+		this.name = nameString;
 	}
 
 	public int getId() {
@@ -22,17 +22,19 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getNameString() {
-		return nameString;
+	
+
+	public String getName() {
+		return name;
 	}
 
-	public void setNameString(String nameString) {
-		this.nameString = nameString;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", nameString=" + nameString + "]";
+		return "Category [id=" + id + ", nameString=" + name + "]";
 	}
 	
 	

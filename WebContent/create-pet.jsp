@@ -1,4 +1,5 @@
 <jsp:include page="/include/admin-header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
    <body class="bg-gradient-primary">
 
     <div class="container">
@@ -11,43 +12,34 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Create a PET!</h1>
                             </div>
-                            <form class="user">
+                            <form action="PetControllerServlet" method="POST" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="text" name="name" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="text" name="img" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="img">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input type="number" class="form-control form-control-user"
+                                            id="number" name="age" placeholder="age">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                       <select name="categoryId">
+                                       <c:forEach var="category" items="${LIST_CATEGORY}">
+											<option value="${category.id}">${category.name}</option>                                       
+                                       </c:forEach>
+                                       </select>
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                               <input type="submit" value="SUBMIT" class="btn btn-primary btn-user btn-block" />
+                                <input type="hidden" name="command" value="ADD">
                             </form>
                             <hr>
                             <div class="text-center">

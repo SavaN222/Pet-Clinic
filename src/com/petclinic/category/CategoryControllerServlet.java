@@ -52,12 +52,12 @@ public class CategoryControllerServlet extends HttpServlet {
 		try {
 			String command = request.getParameter("command");
 			if (command == null) {
-				command = "HOME";
+				command = "LIST";
 			}
 			
 			switch (command) {
-			case "HOME":
-				response.sendRedirect("VetControllerServlet");
+			case "LIST":
+				listCategory(request, response);
 				break;
 			default:
 				break;
@@ -69,20 +69,25 @@ public class CategoryControllerServlet extends HttpServlet {
 	}
 
 
+	private void listCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Category> categories = categoryDbUtil.listCategories();
+		
+		request.setAttribute("LIST_CATEGORY", categories);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("create-pet.jsp");
+		
+		requestDispatcher.forward(request, response);
+		
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String command = request.getParameter("command");
-			if (command == null) {
-				command = "HOME";
-			}
 			
 			switch (command) {
-			case "HOME":
-				response.sendRedirect("VetControllerServlet");
-				break;
 			case "ADD":
 				addCategory(request, response);
 				break;

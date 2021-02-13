@@ -53,6 +53,10 @@ public class PetControllerServlet extends HttpServlet {
 		try {
 			String command = request.getParameter("command");
 			
+			if (command == null) {
+				command = "LIST";
+			}
+			
 			switch (command) {
 			case "LIST":
 				listPets(request, response);
@@ -70,7 +74,7 @@ public class PetControllerServlet extends HttpServlet {
 		
 		request.setAttribute("PET_LIST", pets);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/welcome.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list-pets.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}
@@ -79,8 +83,31 @@ public class PetControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			String command = request.getParameter("command");
+			
+			switch (command) {
+			case "ADD":
+				createPet(request, response);
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	private void createPet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String img = request.getParameter("img");
+		int age = Integer.parseInt(request.getParameter("age"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		
+		petDbUtil.createPets(name, img, age, categoryId);
+		
+		listPets(request, response);
+		
 	}
 
 }
