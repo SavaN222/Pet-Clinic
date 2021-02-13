@@ -59,9 +59,6 @@ public class CategoryControllerServlet extends HttpServlet {
 			case "HOME":
 				response.sendRedirect("VetControllerServlet");
 				break;
-			case "LIST":
-				listCategories(request, response);
-				break;
 			default:
 				break;
 			}
@@ -71,14 +68,6 @@ public class CategoryControllerServlet extends HttpServlet {
 		
 	}
 
-	private void listCategories(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Category> categories = categoryDbUtil.listCategories();
-		
-		request.setAttribute("LIST_CATEGORIES", categories);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/welcome.jsp");
-		requestDispatcher.forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
