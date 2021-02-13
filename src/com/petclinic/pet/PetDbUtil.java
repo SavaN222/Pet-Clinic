@@ -75,6 +75,33 @@ public class PetDbUtil {
 		}
 	}
 	
+	public Pet getPet(int id) {
+		Pet pet = null;
+		String sql = "SELECT * FROM pet WHERE id = ?";
+		ResultSet resultSet = null;
+		
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, id);
+			resultSet = stmt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("name");
+				String img = resultSet.getString("img");
+				int age = resultSet.getInt("age");
+				int categoryId = resultSet.getInt("category_id");
+				
+				pet = new Pet(id, name, img, age, categoryId);
+				return pet;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(null, resultSet);
+		}
+		return pet;
+	}
+	
 	public void deletePet(int id) {
 		String sql = "DELETE FROM pet WHERE id = ?";
 		
