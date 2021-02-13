@@ -1,11 +1,14 @@
 package com.petclinic.category;
 
 import java.io.IOException;
+
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class CategoryControllerServlet
@@ -13,8 +16,26 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CategoryControllerServlet")
 public class CategoryControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private CategoryDbUtil categoryDbUtil;
+	
+	@Resource(name = "jdbc/pet_clinic")
+	private DataSource dataSource;
+	
+	
        
-    /**
+    @Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		try {
+			categoryDbUtil = new CategoryDbUtil(dataSource);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public CategoryControllerServlet() {
@@ -26,16 +47,57 @@ public class CategoryControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			String command = request.getParameter("command");
+			if (command == null) {
+				command = "HOME";
+			}
+			
+			switch (command) {
+			case "HOME":
+				response.sendRedirect("VetControllerServlet");
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			String command = request.getParameter("command");
+			if (command == null) {
+				command = "HOME";
+			}
+			
+			switch (command) {
+			case "HOME":
+				response.sendRedirect("VetControllerServlet");
+				break;
+			case "ADD":
+				addCategory(request, response);
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	private void addCategory(HttpServletRequest request, HttpServletResponse response) {
+		String name = request.getParameter("name");
+		
+		categoryDbUtil.createCategory(name);
+		
+		response.sendRedirect("VetControllerServlet");
+		
 	}
 
 }

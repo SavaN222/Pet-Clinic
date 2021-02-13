@@ -23,13 +23,15 @@
   		</c:url>
   		<a href="${tempLink}">LIST ALL VETS</a>
       </c:if>
+      
+   <br><br><br>
+   <h2>CATEGORY CRUD:</h2>
+   <a href="create-category.jsp">Add Category</a>
 
 
 <h2>TO DO LIST</h2>
-<a>Vets:CRUD</a>
 <a>Pet: CRUD</a>
 <a>Blog:Crud</a>
-<a>Category:Crud</a>
 
 
 
