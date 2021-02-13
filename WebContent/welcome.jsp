@@ -17,7 +17,11 @@
 
  <c:set var = "vetID" scope = "session" value = "${VET.id}"/>
       <c:if test = "${vetID == 1}">
-         <a href="create-vet.jsp">CREATE VET</a>
+         <a href="create-vet.jsp">CREATE VET</a> <br>
+         <c:url var="tempLink" value="VetControllerServlet">
+		  	<c:param name="command" value="LIST" />
+  		</c:url>
+  		<a href="${tempLink}">LIST ALL VETS</a>
       </c:if>
 
 
