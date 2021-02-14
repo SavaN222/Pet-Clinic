@@ -30,16 +30,17 @@ public class VetDbUtil {
 		}
 	}
 	
-	public void createVet(String firstName, String lastName, String email, String password) {
-		String sql = "INSERT INTO vet(first_name, last_name, email, password) VALUES(?, ?, ?, ?)";
+	public void createVet(String firstName, String lastName, String img, String email, String password) {
+		String sql = "INSERT INTO vet(first_name, last_name, img, email, password) VALUES(?, ?, ?, ?, ?)";
 		
 		try(Connection conn = dataSource.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 			
 			stmt.setString(1, firstName);
 			stmt.setString(2, lastName);
-			stmt.setString(3, email);
-			stmt.setString(4, password);
+			stmt.setString(3, img);
+			stmt.setString(4, email);
+			stmt.setString(5, password);
 			
 			stmt.executeUpdate();
 			

@@ -31,12 +31,14 @@
       <th scope="row">${vet.id}</th>
       <td>${vet.firstName}</td>
       <td>${vet.lastName}</td>
-      <td>${vet.img}</td>
+      <td><img class="img-radius" width="150" height="150" src="${vet.img}"></td>
       <td>${vet.email}</td>
       <td><a href="${editLink}">EDIT</a> / <a href="${deleteLink}" 
       onclick="if (!(confirm('Are you sure?'))) return false">DELETE</a></td>
     </tr>
 </c:forEach>
+
+<a class="display-4 text-info" href="VetControllerServlet"> Go back</a>
 
 
 

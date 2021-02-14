@@ -3,7 +3,7 @@
 
 <h1>KREIRAJ VETERINARE</h1>
 
-<form action="VetControllerServlet" method="POST">
+<form action="VetControllerServlet" method="POST" enctype="multipart/form-data">
 	
 	<input type="hidden" name="command" value="ADD">
 		
@@ -27,6 +27,8 @@
 	    <label for="passsword">Password:</label>
 	    <input type="password" name="password" class="form-control" id="password">
 	  </div>
+	  
+	   <input type="file" name="file">
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 

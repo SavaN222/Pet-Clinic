@@ -1,5 +1,6 @@
 package com.petclinic.vet;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -7,21 +8,28 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 /**
  * Servlet implementation class VetControllerServlet
  */
 @WebServlet("/VetControllerServlet")
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+maxFileSize=1024*1024*10,      // 10MB
+maxRequestSize=1024*1024*50)
 public class VetControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private VetDbUtil vetDbUtil;
+	
+	private static final String SAVE_DIR="images/vet";
 	
 	@Resource(name = "jdbc/pet_clinic")
 	private DataSource dataSource;
@@ -163,14 +171,39 @@ public class VetControllerServlet extends HttpServlet {
 	private void addVet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
+		String img = request.getParameter("img");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		vetDbUtil.createVet(firstName, lastName, email, password);
+		// image save //
+				String savePath = "C:\\Users\\Korisnik\\eclipse-workspace\\Pet Clinic\\WebContent" + File.separator + SAVE_DIR; //specify your path here
+		        File fileSaveDir=new File(savePath);
+		        if(!fileSaveDir.exists()){
+		            fileSaveDir.mkdir();
+		        }
+
+		        Part part = request.getPart("file");//
+		        String fileName = extractFileName(part);//file name
+		        part.write(savePath + File.separator + img + ".jpg");
+		        String dbImage = "images/vet/" + img + ".jpg";
+		
+		vetDbUtil.createVet(firstName, lastName, dbImage, email, password);
 		
 		home(request, response);
 		
 	}
 
+	// file name of the upload file is included in content-disposition header like this:
+			//form-data; name="dataFile"; filename="PHOTO.JPG"
+			private String extractFileName(Part part) {//This method will print the file name.
+		        String contentDisp = part.getHeader("content-disposition");
+		        String[] items = contentDisp.split(";");
+		        for (String s : items) {
+		            if (s.trim().startsWith("filename")) {
+		                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+		            }
+		        }
+		        return "";
+		    }
 
 }

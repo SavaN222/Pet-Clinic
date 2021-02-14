@@ -16,7 +16,7 @@
 	  
 	  <div class="form-group">
 	    <label for="img">Img</label>
-	    <input type="text" name="img" class="form-control" id="img" value="${PET.img}">
+	    <input type="text" name="img" class="form-control" id="img" value="novi naziv slike">
 	  </div>
 		
 	  <div class="form-group">
@@ -24,6 +24,8 @@
 	    <input type="number" name="age" class="form-control" id="age" value="${PET.age}">
 	 
 	  </div>
+	  
+	   <input type="file" name="file">
 	  
 	  <input type="submit" class="btn btn-primary" value="SUBMIT">
 	</form>

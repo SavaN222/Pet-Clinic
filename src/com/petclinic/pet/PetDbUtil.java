@@ -34,7 +34,7 @@ public class PetDbUtil {
 		List<Pet> pets = new ArrayList<Pet>();
 		ResultSet resultSet = null;
 		String sql = "SELECT p.id, p.name, p.img, p.age, c.name FROM pet p"
-				+ " LEFT JOIN category c ON p.id = c.id";
+				+ " LEFT JOIN category c ON p.category_id = c.id";
 		
 		try(Connection conn = dataSource.getConnection();
 				Statement stmt = conn.createStatement()) {
