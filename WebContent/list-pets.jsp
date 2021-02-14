@@ -7,6 +7,7 @@
 	}
 %>
 <body>
+<a href="VetControllerServlet" class="display-4 text-info">Go back</a>
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
@@ -52,6 +53,10 @@
                                         <a href="${deleteLink}" class="m-b-10 f-w-600" 
                                         onclick="if (!(confirm('Are you sure?'))) return false">
                                         DELETE</a>
+                                    </div>
+                                    <hr>
+                                    <div class="col-sm-12">
+                                    <a href="#" class="btn btn-danger">Vidi karton</a>
                                     </div>
                                 </div>
                               
