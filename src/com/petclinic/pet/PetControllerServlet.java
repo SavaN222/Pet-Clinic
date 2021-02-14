@@ -163,7 +163,19 @@ public class PetControllerServlet extends HttpServlet {
 		int age = Integer.parseInt(request.getParameter("age"));
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 		
-		petDbUtil.updatePet(id, name, img, age, categoryId);
+		// image save //
+				String savePath = "C:\\Users\\Korisnik\\eclipse-workspace\\Pet Clinic\\WebContent" + File.separator + SAVE_DIR; //specify your path here
+		        File fileSaveDir=new File(savePath);
+		        if(!fileSaveDir.exists()){
+		            fileSaveDir.mkdir();
+		        }
+
+		        Part part = request.getPart("file");//
+		        String fileName = extractFileName(part);//file name
+		        part.write(savePath + File.separator + img + ".jpg");
+		        String dbImage = "images/pets/" + img + ".jpg";
+		
+		petDbUtil.updatePet(id, name, dbImage, age, categoryId);
 		
 		listPets(request, response);
 		
