@@ -26,7 +26,7 @@
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
-                                <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+                                <div class="m-b-25"> <img src="${pet.img }" class="img-radius w-100" alt="User-Profile-Image" height="300"> </div>
                                 <h6 class="f-w-600">${pet.name}</h6>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Category</p>
-                                        <h6 class="text-muted f-w-400">${pet.categoryName }</h6>
+                                        <h6 class="text-muted f-w-400">${pet.categoryName}</h6>
                                     </div>
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
