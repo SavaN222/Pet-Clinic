@@ -1,6 +1,6 @@
 <jsp:include page="/include/admin-header.jsp" />
 
-<body class="bg-gradient-primary">
+<body class="main-bg">
 
     <div class="container">
 

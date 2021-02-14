@@ -1,8 +1,8 @@
 <jsp:include page="/include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<h1>KREIRAJ VETERINARE</h1>
-
+<h1>CREATE VET</h1>
+<a href="VetControllerServlet" class="display-4 text-info">Go back</a>
 <form action="VetControllerServlet" method="POST" enctype="multipart/form-data">
 	
 	<input type="hidden" name="command" value="ADD">
@@ -20,7 +20,6 @@
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
 	    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	  </div>
 	  
 	  	<div class="form-group">

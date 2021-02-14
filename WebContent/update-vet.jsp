@@ -1,9 +1,8 @@
 <jsp:include page="/include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<h1>KREIRAJ VETERINARE</h1>
-
-<form action="VetControllerServlet" method="POST">
+<h1>UPDATE VET</h1>
+<a href="VetControllerServlet" class="display-4 bg-info">Go back</a>
 	
 	<input type="hidden" name="command" value="UPDATE">
 	<input type="hidden" name="id" value="${VET.id}"/>
