@@ -57,10 +57,15 @@ public class LoginControllerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		HttpSession session = request.getSession();
+
+		
+		if (session != null) {
+		    session.invalidate();
+		}
 		
 		int id = loginDbUtil.login(email, password);
 		
-		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
 		response.sendRedirect("VetControllerServlet");
 		
