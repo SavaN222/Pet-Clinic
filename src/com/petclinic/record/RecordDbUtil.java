@@ -54,7 +54,7 @@ public class RecordDbUtil {
 	public List<Record> getRecordsForPet(int petId) {
 		
 		String sql = "SELECT r.id, r.title, r.description, r.visited_at, r.pet_id, v.first_name, v.last_name"
-				+ " FROM record r LEFT JOIN vet v ON r.vet_id = v.id WHERE pet_id = ?";
+				+ " FROM record r LEFT JOIN vet v ON r.vet_id = v.id WHERE pet_id = ? ORDER BY r.visited_at DESC";
 		ResultSet resultSet = null;
 		List<Record> medicalRecords = new ArrayList<Record>();
 		
@@ -87,6 +87,18 @@ public class RecordDbUtil {
 		}
 		
 		return medicalRecords;
+	}
+	
+	public void deleteRecord(int recordId) {
+		String sql = "DELETE FROM record WHERE id = ?";
+		try(Connection conn = dataSource.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, recordId);
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

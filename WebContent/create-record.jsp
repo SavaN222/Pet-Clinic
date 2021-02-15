@@ -21,48 +21,32 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex d-flex justify-content-between align-items-center mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pet Medical Record for: ${PET.name}, ${PET.age } yrs old</h1>
-                        <c:url var="createLink" value="RecordControllerServlet">
-					  	<c:param name="command" value="GETCREATE" />
-					  	<c:param name="petId" value="${PET.id}" />
-					  </c:url>
-                        <a class="btn btn-danger" href="${createLink }">CREATE NEW MEDICAL RECORD</a>
-                        <a class="btn btn-info" href="VetControllerServlet">GO BACK</a>
+                        <h1 class="h3 mb-0 text-gray-800">Create Medical Record</h1>
+                        <a class="btn btn-info" href="#">GO BACK</a>
                     </div>
 
                     
 
-                    <div class="row">
-                    <c:forEach var="record" items="${SHOW_RECORDS}">
-						<div class="col-lg-6">
-						 <!-- Collapsable Card Example -->
-                       <div class="card shadow mb-4">
-                           <!-- Card Header - Accordion -->
-                           <a href="#collapseCardExample${record.id}" class="d-block card-header py-3" data-toggle="collapse"
-                               role="button" aria-expanded="true" aria-controls="collapseCardExample${record.id}">
-                               <h6 class="m-0 font-weight-bold text-primary">${record.title}</h6>
-                           </a>
-                          
-                           <!-- Card Content - Collapse -->
-                           <div class="collapse show" id="collapseCardExample${record.id}">
-                               <div class="card-body">
-                                   <p>${record.description}</p>
-                               </div>
-                           </div>
-                            <div class="card-footer text-muted d-flex justify-content-between align-items-center">
-    							<p>Created by:<b>${record.vetName}</b> on <span class="font-italic">${record.date}</span></p>
-    							<c:url var="deleteLink" value="RecordControllerServlet">
-								  	<c:param name="command" value="DELETE" />
-								  	<c:param name="recorId" value="${record.id}" />
-								  	<c:param name="petId" value="${record.petId}" />
-								  </c:url>
-    							<a href="${deleteLink}" onclick="if (!(confirm('Are you sure?'))) return false">
-    							<i class="text-danger fas fa-trash"></i></a>
-  							</div>
-                       </div>
-						</div>
-							</c:forEach>
-						</div> <!--  row end -->
+                   <form action="RecordControllerServlet" method="POST">
+                   
+                    <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <input type="text" name="title" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Title">
+                                    </div>
+                                    <div class="col-lg-12">
+                                         <div class="form-group">
+										    <label for="exampleFormControlTextarea1">Description for pet record</label>
+										    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+										  </div>
+                                    </div>
+                                </div>
+                                
+                                <input type="hidden" name="petId" value="${petId}">                   
+                                <input type="hidden" name="vetId" value="<%= session.getAttribute("id") %>">  
+                                 <input type="hidden" name="command" value="ADD">              
+                   		<input type="submit" value="SUBMIT">
+                   </form>
                       
 
                 </div>

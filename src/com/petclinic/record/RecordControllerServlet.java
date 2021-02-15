@@ -66,12 +66,40 @@ public class RecordControllerServlet extends HttpServlet {
 			case "SHOW":
 				showRecordsForPet(request, response);
 				break;
+			case "GETCREATE":
+				showCreateRecordPage(request, response);
+				break;
+			case "DELETE":
+				deleteRecord(request, response);
+				break;
 			default:
 				break;
 			}
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
+	}
+
+	private void deleteRecord(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int recordId = Integer.parseInt(request.getParameter("recorId"));
+		int petId = Integer.parseInt(request.getParameter("petId"));
+		
+		recordDbUtil.deleteRecord(recordId);
+		
+		showRecordsForPet(request, response);
+		
+		
+		
+	}
+
+	private void showCreateRecordPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int petId = Integer.parseInt(request.getParameter("petId"));
+		
+		request.setAttribute("petId", petId);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("create-record.jsp");
+		requestDispatcher.forward(request, response);
+		
 	}
 
 	private void showRecordsForPet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,8 +121,31 @@ public class RecordControllerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			String command = request.getParameter("command");
+			
+			switch (command) {
+			case "ADD":
+				createRecord(request, response);
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	private void createRecord(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		int petId = Integer.parseInt(request.getParameter("petId"));
+		int vetId = Integer.parseInt(request.getParameter("vetId"));
+		
+		recordDbUtil.createRecords(title, description, petId, vetId);
+		
+		showRecordsForPet(request, response);
+		
 	}
 
 }
