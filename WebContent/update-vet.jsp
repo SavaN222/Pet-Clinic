@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <h1>UPDATE VET</h1>
-<a href="VetControllerServlet" class="display-4 bg-info">Go back</a>
+<a href="VetControllerServlet" class="display-4 text-info">Go back</a>
+	
+	<form action="VetControllerServlet" method="POST">
 	
 	<input type="hidden" name="command" value="UPDATE">
 	<input type="hidden" name="id" value="${VET.id}"/>

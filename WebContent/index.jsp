@@ -41,7 +41,7 @@
       <img class="d-block w-100 img-size" src="https://images.pexels.com/photos/164186/pexels-photo-164186.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="First slide">
       <div class="carousel-caption d-none d-md-block text-top-right">
         <div data-aos="fade-left" data-aos-duration="1200"  data-aos-delay="300">
-    <h5 class="text-heading">NASLOV TEKSTA</h5>
+    <h5 class="text-heading">PET CLINIC</h5>
     <p>Lorem, ipsum dolor.</p>
     </div>
   </div>
@@ -50,7 +50,7 @@
       <img class="d-block w-100 img-size" src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Second slide">
       <div class="carousel-caption d-none d-md-block text-left">
         <div data-aos="fade-right" data-aos-duration="1200"  data-aos-delay="300">
-    <h5 class="text-heading">NASLOV TEKSTA</h5>
+    <h5 class="text-heading">PET CLINIC</h5>
     <p>Lorem, ipsum dolor.</p>
   </div>
   </div>
@@ -58,7 +58,7 @@
     <div class="carousel-item">
       <img class="d-block w-100 img-size" src="https://images.pexels.com/photos/1316295/pexels-photo-1316295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Third slide">
       <div class="carousel-caption d-none d-md-block text-up">
-    <h5 class="text-heading">NASLOV TEKSTA</h5>
+    <h5 class="text-heading">PET CLINIC</h5>
     <p>Lorem ipsum, dolor.</p>
   </div>
     </div>

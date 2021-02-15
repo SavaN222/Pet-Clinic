@@ -27,7 +27,7 @@
 
                     
 
-                   <form action="RecordControllerServlet" method="POST">
+                   <form action="RecordControllerServlet" method="POST" autocomplete="off">
                    
                     <div class="form-group row">
                                     <div class="col-lg-12">

@@ -4,7 +4,7 @@
 <h1>Create Category</h1>
 <a href="VetControllerServlet" class="display-4 text-info">Go back</a>
 
-<form action="CategoryControllerServlet" method="POST">
+<form action="CategoryControllerServlet" method="POST" autocomplete="off">
 	
 	<input type="hidden" name="command" value="ADD">
 		
