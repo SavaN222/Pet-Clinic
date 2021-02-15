@@ -2,11 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <% 
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	if(session.getAttribute("id") == null) {
 		response.sendRedirect("login.jsp");
 	}
 %>
-
+<c:url var="logout" value="LoginControllerServlet">
+  	<c:param name="command" value="LOGOUT" />
+  </c:url>
+  
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -214,7 +218,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.jsp" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="${logout}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -442,7 +446,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.jsp">Logout</a>
+                    <a class="btn btn-primary" href="${logout}">Logout</a>
                 </div>
             </div>
         </div>

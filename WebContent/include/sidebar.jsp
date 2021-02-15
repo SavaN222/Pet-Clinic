@@ -37,8 +37,7 @@
                 </a>
       
       
-               <c:set var = "vetID" scope = "session" value = "${VET.id}"/>
-      <c:if test = "${vetID == 1}">
+             
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Vets:</h6>
@@ -47,7 +46,7 @@
 		  	<c:param name="command" value="LIST" />
   		</c:url>
                         <a class="collapse-item" href="${tempLink}">List all Vets</a>
-                        </c:if>
+        
                     </div>
                 </div>
             </li>

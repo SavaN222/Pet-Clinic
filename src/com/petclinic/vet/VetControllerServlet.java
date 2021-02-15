@@ -119,7 +119,11 @@ public class VetControllerServlet extends HttpServlet {
 
 	private void home(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Vet vet = vetDbUtil.getVet((int) session.getAttribute("id"));
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("LoginControllerServlet");
+		}
+		
+		Vet vet = vetDbUtil.getVet((int) session.getAttribute("id"));	
 		int numOfPets = vetDbUtil.numOfPets();
 		int numOfRecords = vetDbUtil.numOfRecords();
 		
