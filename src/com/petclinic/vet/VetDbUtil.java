@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -121,6 +122,52 @@ public class VetDbUtil {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public int numOfPets() {
+		String sql = "SELECT count(id) as numOfPets FROM pet";
+		ResultSet resultSet = null;
+		int numOfPets = 0;
+		
+		try(Connection conn = dataSource.getConnection();
+				Statement stmt = conn.createStatement()) {
+			
+			resultSet = stmt.executeQuery(sql);
+			
+			while (resultSet.next()) {
+				numOfPets = resultSet.getInt("numOfPets");
+			}
+			return numOfPets;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(null, resultSet);
+		}
+		return numOfPets;
+
+	}
+	
+	public int numOfRecords() {
+		String sql = "SELECT count(id) as numOfRecords FROM record";
+		ResultSet resultSet = null;
+		int numOfRecords = 0;
+		
+		try(Connection conn = dataSource.getConnection();
+				Statement stmt = conn.createStatement()) {
+			
+			resultSet = stmt.executeQuery(sql);
+			
+			while (resultSet.next()) {
+				numOfRecords = resultSet.getInt("numOfRecords");
+			}
+			return numOfRecords;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(null, resultSet);
+		}
+		return numOfRecords;
+
 	}
 
 	public void updateVet(int id, String firstName, String lastName, String email, String password) {

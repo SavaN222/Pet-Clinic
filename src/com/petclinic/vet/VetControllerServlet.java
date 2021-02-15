@@ -3,6 +3,7 @@ package com.petclinic.vet;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -119,8 +120,12 @@ public class VetControllerServlet extends HttpServlet {
 	private void home(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Vet vet = vetDbUtil.getVet((int) session.getAttribute("id"));
+		int numOfPets = vetDbUtil.numOfPets();
+		int numOfRecords = vetDbUtil.numOfRecords();
 		
 		request.setAttribute("VET", vet);
+		request.setAttribute("numOfPets", numOfPets);
+		request.setAttribute("numOfRecords", numOfRecords);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/dashboard.jsp");
 		requestDispatcher.forward(request, response);
