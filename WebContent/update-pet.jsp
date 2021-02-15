@@ -4,7 +4,7 @@
 <h1>UPDATE PET</h1>
 <a href="VetControllerServlet" class="display-4 bg-info">Go back</a>
 
-<form action="PetControllerServlet" method="POST">
+<form action="PetControllerServlet" method="POST" enctype="multipart/form-data">
 	
 	<input type="hidden" name="command" value="UPDATE">
 	<input type="hidden" name="id" value="${PET.id}"/>
