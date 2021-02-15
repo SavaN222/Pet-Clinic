@@ -1,6 +1,6 @@
 <jsp:include page="/include/admin-header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-   <body class="bg-gradient-primary">
+   <body class="main-bg">
 
     <div class="container">
 

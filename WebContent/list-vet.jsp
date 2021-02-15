@@ -33,8 +33,8 @@
       <td>${vet.lastName}</td>
       <td><img class="img-radius" width="150" height="150" src="${vet.img}"></td>
       <td>${vet.email}</td>
-      <td><a href="${editLink}">EDIT</a> / <a href="${deleteLink}" 
-      onclick="if (!(confirm('Are you sure?'))) return false">DELETE</a></td>
+      <td><a href="${editLink}"><i class="text-success fas fa-pen"></i></a> / <a href="${deleteLink}" 
+      onclick="if (!(confirm('Are you sure?'))) return false"><i class="text-danger fas fa-trash"></i></a></td>
     </tr>
 </c:forEach>
 
