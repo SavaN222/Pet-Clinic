@@ -55,8 +55,13 @@
                                         DELETE</a>
                                     </div>
                                     <hr>
+                                    
+                                      <c:url var="record" value="RecordControllerServlet">
+									  	<c:param name="command" value="SHOW" />
+									  	<c:param name="petId" value="${pet.id}" />
+									  </c:url>
                                     <div class="col-sm-12">
-                                    <a href="#" class="btn btn-danger">Vidi karton</a>
+                                    <a href="${record}" class="btn btn-danger">See Medical Records</a>
                                     </div>
                                 </div>
                               

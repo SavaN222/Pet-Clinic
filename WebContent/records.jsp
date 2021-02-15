@@ -1,5 +1,5 @@
 <jsp:include page="/include/admin-header.jsp" />
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -20,50 +20,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Zdravstveni Karton:Cile</h1>
-                        <a href="#">kreiraj novi</a>
+                    <div class="d-sm-flex d-flex justify-content-between align-items-center mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Pet Medical Record for: ${PET.name}, ${PET.age } yrs old</h1>
+                        <a class="btn btn-danger" href="#">CREATE NEW MEDICAL RECORD</a>
                     </div>
 
                     
 
                     <div class="row">
+                    <c:forEach var="record" items="${SHOW_RECORDS}">
 						<div class="col-lg-6">
 						 <!-- Collapsable Card Example -->
                        <div class="card shadow mb-4">
                            <!-- Card Header - Accordion -->
-                           <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-                               role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                               <h6 class="m-0 font-weight-bold text-primary">Karton kreirao: Veterinar</h6>
+                           <a href="#collapseCardExample${record.id}" class="d-block card-header py-3" data-toggle="collapse"
+                               role="button" aria-expanded="true" aria-controls="collapseCardExample${record.id}">
+                               <h6 class="m-0 font-weight-bold text-primary">${record.title}</h6>
                            </a>
                           
                            <!-- Card Content - Collapse -->
-                           <div class="collapse show" id="collapseCardExample">
+                           <div class="collapse show" id="collapseCardExample${record.id}">
                                <div class="card-body">
-                                   <p>italic date:</p>
-                                   Opis problema
+                                   <p>${record.description}</p>
                                </div>
                            </div>
+                            <div class="card-footer text-muted">
+    							<p>Created by:<b>${record.vetName}</b> on <span class="font-italic">${record.date}</span></p>
+  							</div>
                        </div>
 						</div>
-						<div class="col-lg-6">
-						 <!-- Collapsable Card Example -->
-                       <div class="card shadow mb-4">
-                           <!-- Card Header - Accordion -->
-                           <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-                               role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                               <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-                           </a>
-                           <!-- Card Content - Collapse -->
-                           <div class="collapse show" id="collapseCardExample">
-                               <div class="card-body">
-                                   This is a collapsable card example using Bootstrap's built in collapse
-                                   functionality. <strong>Click on the card header</strong> to see the card body
-                                   collapse and expand!
-                               </div>
-                           </div>
-                       </div>
-						</div>
+							</c:forEach>
+						</div> <!--  row end -->
                       
 
                 </div>
